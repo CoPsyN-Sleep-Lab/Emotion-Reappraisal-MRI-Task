@@ -53,7 +53,13 @@ This task measures emotion reactivity and regulation based on the psychological 
 # How Data is Logged
 - There are two output files in the 'data' folder that contain information about the experiment:
   1. .log File
+    - Logs information about the experiment such as key presses, timing of each screen, and experiment information
+    - Difficult to read, but we use a parsing script that pulls out relevant information for the data analysis
+    - Used for data analysis
   2. .csv File
+    - Logs information about key press, timing of stimuli etc. 
+    - Easy to read, so can be used for data quality checks immediately after running the task. 
+    - Not used in data analysis
 
 # Stimuli Characteristics and Presentation
 All images in this task were taken from the International Affective Picture System (IAPS) and are stored in the img/iaps folder.
