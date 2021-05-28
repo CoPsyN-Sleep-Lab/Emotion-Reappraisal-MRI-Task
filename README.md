@@ -74,7 +74,7 @@ All images in this task were taken from the International Affective Picture Syst
   - Relax text: 
   - Images: 
 
-# What is in the Task Folder/Repository?
+# What is in the Task Folder/Repo?
 - **emo_reg.py** is the main script for the task
 - **get_usb.py** is a script for a function that finds a USB device. This file is called in the main script and must be in the same folder as the **emo_reg.py** file. 
 - **siteConfig.yaml** contains the configuration informaiton for the monitor at CNI. This file is called in the main script and must be in the same folder as the **emo_reg.py** file. 
