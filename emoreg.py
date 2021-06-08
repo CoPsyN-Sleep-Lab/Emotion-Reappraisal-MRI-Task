@@ -88,11 +88,12 @@ mon.setSizePix(resolution)
 
 # Setup the Window
 win = visual.Window(
-    size=[1440, 900], fullscr=True, screen=0, 
-    winType='pyglet', allowGUI=False, allowStencil=False,
-    monitor='testMonitor', color=[-1,-1,-1], colorSpace='rgb',
+    size=resolution, fullscr=True, screen=['monitor']['screen'], 
+    #winType='pyglet', 
+    allowGUI=False, allowStencil=False,
+    monitor=mon, color=[-1,-1,-1], colorSpace='rgb',
     blendMode='avg', useFBO=True, 
-    units='height')
+    units='deg')
 
 # store frame rate of monitor if we can measure it successfully
 expInfo['frameRate']=win.getActualFrameRate()
