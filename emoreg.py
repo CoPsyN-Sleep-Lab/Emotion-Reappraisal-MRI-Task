@@ -52,9 +52,9 @@ expInfo['psychopyVersion'] = psychopyVersion
 odd = False
 if int(expInfo['participant']) %2 ==1:
     odd = True
-    filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'] + '_1thumb_')
+    filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'] + '_1thumb')
 else:
-    filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'] + '_5thumb_')
+    filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'] + '_5thumb')
 
 
 # FIXME: deleted ExperimentHandler here
@@ -1364,7 +1364,7 @@ for thisStudyTrial in StudyTrials:
             key_resp_rev=key_resp.keys
             # check responses
         if key_resp.keys in ['', [], None]:  # No response was made
-            key_resp.keys = None
+            key_resp_rev = None
         thisExp.addData('key_resp.keys',key_resp_rev)
         #else:
             #thisExp.addData('key_resp.keys',key_resp.keys)
@@ -1372,7 +1372,9 @@ for thisStudyTrial in StudyTrials:
         if key_resp.keys != None:  # we had a response
             thisExp.addData('key_resp', key_resp.rt)
 #        # refresh the screen
+    #Kathleen will update image name later
         thisExp.addData('image_path', image_path)
+        
         thisExp.addData('image.started', emotion_image.tStart)
         thisExp.addData('image.stopped', emotion_image.tStop)
         thisExp.addData('Rating_inst.started', Rating_inst.tStart)
