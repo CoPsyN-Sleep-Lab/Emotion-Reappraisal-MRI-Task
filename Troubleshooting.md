@@ -6,3 +6,5 @@
 
 
 ## To run different versions of PsychoPy for different scripts try this: https://www.psychopy.org/faqs/versionControl.html#useversion
+
+## Updating Image Size: https://www.psychopy.org/builder/components/image.html
