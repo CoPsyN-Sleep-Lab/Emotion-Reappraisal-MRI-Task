@@ -78,7 +78,7 @@ All images in this task were taken from the International Affective Picture Syst
   - Instruction text: 
   - Cue text: 
   - Relax text: 
-  - Images: 
+  - Images: 1024 x 768 pixels (recommended size by IAPS, but unclear if this is optimal for scanner)
 
 # What is in the Task Folder/Repo?
 - **emo_reg.py** is the main script for the task
@@ -96,7 +96,10 @@ All images in this task were taken from the International Affective Picture Syst
 
 # What is in the Event-Related Reapp Task Box Folder?
 - The **Instructions** Folder contains files with the original task instructions (from Eprime task)
-- The **Papers** folder contains pdfs of useful papers for the task, including the McRae 2012 and Minkel 2012 papers this task was created from. 
+- The **Papers** folder contains pdfs of useful papers for the task:
+    - *McRae 2012* and *Minkel 2012* are the papers this task was adapted from. *Minkel 2012* was used in a scanner, so it was used to guide scanning-related aspects of task.
+    - *Redies 2020* reports about stimulus size in IAPs compared to other image sets and recommendations for experiments
+    - *Bradley 2001* is a paper from the IAPs group about affective response to pictures
 - The **Original Task and Stimuli** folder contains the original Eprime files and stimuli files from the McRae paper
 - The **IAPS_Stimuli_2020** folder contains all images downloaded from the IAPS database
 - The **EmoReappTask.psyexp** file is the PsychoPy Experiment Builder (GUI) file originally used as the basis of the task script in the coder. 
