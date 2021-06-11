@@ -88,7 +88,7 @@ mon.setSizePix(resolution)
 
 # Setup the Window
 win = visual.Window(
-    size=resolution, fullscr=True, screen=['monitor']['screen'], 
+    size=resolution, fullscr=True, screen=config['monitor']['screen'], 
     #winType='pyglet', 
     allowGUI=False, allowStencil=False,
     monitor=mon, color=[-1,-1,-1], colorSpace='rgb',
@@ -143,25 +143,25 @@ InstructionsClock = core.Clock()
 Instructions1 = visual.TextStim(win=win, name='Instructions1',
     text='You will be shown a series of photos. Before each photo, you will be instructed to either LOOK or DECREASE',
     font='Arial',
-    pos=(0, 0), height=0.6, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=2, wrapWidth=38, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     depth=0.0);
 instructions2 = visual.TextStim(win=win, name='instructions2',
     text='When you see the word LOOK, \nlook at the picture and react naturally',
     font='Arial',
-    pos=(0, 0), height=0.6, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=2, wrapWidth=38, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     depth=-1.0);
 Instructions3 = visual.TextStim(win=win, name='Instructions3',
     text='When you see the word DECREASE, \nthink about the picture in a way to decrease any negative feelings',
     font='Arial',
-    pos=(0, 0), height=0.6, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=2, wrapWidth=38, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     depth=-2.0);
 Instructions4 = visual.TextStim(win=win, name='Instructions4',
     text='After each photo, you will be asked to rate how negative you feel on a scale of 1 to 5 like this:\n\n\n\n\n\n',
     font='Arial',
-    pos=(0, 0), height=0.6, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=2, wrapWidth=38, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     depth=-3.0);
 #show correct scale from counterbalancing based on record ID
@@ -173,7 +173,7 @@ if odd:
         name='Scale',
         image=join(img_dir, 'scale.png'),
         mask=None,
-        ori=0, pos=(0, -0.25), size=(1, 0.25),
+        ori=0, pos=(0, -3), size=(40, 11),
         color=[1,1,1], colorSpace='rgb', opacity=1,
         flipHoriz=False, flipVert=False,
         texRes=128, interpolate=True, depth=-3.0)
@@ -183,7 +183,7 @@ else:
         name='Scale',
         image=join(img_dir, 'scale2.png'),
         mask=None,
-        ori=0, pos=(0, -0.25), size=(1, 0.25),
+        ori=0, pos=(0, -3), size=(40, 11),
         color=[1,1,1], colorSpace='rgb', opacity=1,
         flipHoriz=False, flipVert=False,
         texRes=128, interpolate=True, depth=-3.0)
@@ -191,19 +191,19 @@ else:
 text = visual.TextStim(win=win, name='text',
     text='Press the button on the button box that corresponds with your choice',
     font='Arial',
-    pos=(0, 0), height=0.6, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=2, wrapWidth=38, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     depth=-5.0);
 text_2 = visual.TextStim(win=win, name='text_2',
     text='When you see the word RELAX, you can rest until the next trial begins',
     font='Arial',
-    pos=(0, 0), height=0.6, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=2, wrapWidth=38, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     depth=-6.0);
 text_3 = visual.TextStim(win=win, name='text_3',
     text="Let's practice!\n\nReady to begin? ",
     font='Arial',
-    pos=(0, 0), height=0.6, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=2, wrapWidth=38, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     depth=-7.0);
 # Initialize components for Routine "Countdown"
@@ -211,19 +211,19 @@ CountdownClock = core.Clock()
 Countdown_3 = visual.TextStim(win=win, name='Countdown_3',
     text='3',
     font='Arial',
-    pos=(0, 0), height=0.6, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=3, wrapWidth=38, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     depth=0.0);
 countdown_2 = visual.TextStim(win=win, name='countdown_2',
     text='2',
     font='Arial',
-    pos=(0, 0), height=0.6, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=3, wrapWidth=38, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     depth=-1.0);
 countdown_1 = visual.TextStim(win=win, name='countdown_1',
     text='1',
     font='Arial',
-    pos=(0, 0), height=0.6, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=3, wrapWidth=38, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     depth=-2.0);
 
@@ -234,14 +234,14 @@ FixationCross1 = visual.ImageStim(
     name='FixationCross1', 
     image=join(img_dir, 'fixation.png'),
     mask=None,
-    ori=0, pos=(0, 0), size=(0.5, 0.5),
+    ori=0, pos=(0, 0), size=(15, 15),
     color=[1,1,1], colorSpace='rgb', opacity=1,
     flipHoriz=False, flipVert=False,
     texRes=128, interpolate=True, depth=0.0)
 ImgCue1 = visual.TextStim(win=win, name='ImgCue1',
     text='default text',
     font='Arial',
-    pos=[0,0], height=0.8, wrapWidth=None, ori=0, 
+    pos=[0,0], height=4, wrapWidth=38, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     depth=-1.0);
 
@@ -285,7 +285,7 @@ for image_path in glob(join(img_dir, "iaps", '*.jpg')):
     emotion_image_cache[short_name] = visual.ImageStim(
         win=win, name='emotion_image',
         image=image_path, mask=None, # FLAG why not 'sin'
-        ori=0, pos=[0, 0], size=[1024, 768], units='pix', 
+        ori=0, pos=[0, 0], size=[512, 384], units='pix', 
         color=[1, 1, 1], colorSpace='rgb', opacity=1,
         flipHoriz=False, flipVert=False,
         texRes=128, interpolate=True, depth=0.0) 
@@ -300,7 +300,7 @@ space = core.StaticPeriod(win=win, screenHz=expInfo['frameRate'], name='space')
 Rating_inst = visual.TextStim(win=win, name='Rating_inst',
     text='default text',
     font='Arial',
-    pos=[0,0], height=0.06, wrapWidth=None, ori=0, 
+    pos=[0,0], height=2, wrapWidth=38, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     depth=-1.0);
 
@@ -311,7 +311,7 @@ if odd:
         name='Scale2',
         image=join(img_dir, 'scale.png'),
         mask=None,
-        ori=0, pos=(0, -0.25), size=(1, 0.25),
+        ori=0, pos=(0, -3), size=(40, 11),
         color=[1,1,1], colorSpace='rgb', opacity=1,
         flipHoriz=False, flipVert=False,
         texRes=128, interpolate=True, depth=-3.0)
@@ -321,7 +321,7 @@ else:
         name='Scale2',
         image=join(img_dir, 'scale2.png'),
         mask=None,
-        ori=0, pos=(0, -0.25), size=(1, 0.25),
+        ori=0, pos=(0, -5), size=(25, 6.5),
         color=[1,1,1], colorSpace='rgb', opacity=1,
         flipHoriz=False, flipVert=False,
         texRes=128, interpolate=True, depth=-3.0)
@@ -331,7 +331,7 @@ RelaxClock = core.Clock()
 text_4 = visual.TextStim(win=win, name='text_4',
     text='default text',
     font='Arial',
-    pos=[0,0], height=1.0, wrapWidth=None, ori=0, 
+    pos=[0,0], height=2, wrapWidth=38, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     depth=0.0);
 
@@ -340,7 +340,7 @@ Instructions_2Clock = core.Clock()
 Task_Instructions = visual.TextStim(win=win, name='Task_Instructions',
     text='Do you have any questions before we begin? ',
     font='Arial',
-    pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=2, wrapWidth=38, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     depth=0.0);
 
@@ -349,7 +349,7 @@ TriggerClock = core.Clock()
 trigger_text = visual.TextStim(win=win, name='trigger_text',
     text='default text',
     font='Arial',
-    pos=[0,0], height=1.0, wrapWidth=None, ori=0, 
+    pos=[0,0], height=2, wrapWidth=38, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     depth=0.0);
 
@@ -362,7 +362,7 @@ RelaxClock = core.Clock()
 text_4 = visual.TextStim(win=win, name='text_4',
     text='default text',
     font='Arial',
-    pos=[0,0], height=1.0, wrapWidth=None, ori=0, 
+    pos=[0,0], height=2.5, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     depth=0.0);
 
@@ -643,7 +643,7 @@ for thisPracticetrial in Practicetrials:
     ImgCue1.setPos((0, 0))
     ImgCue1.setText(Cue)
     ImgCue1.setFont('Arial')
-    ImgCue1.setHeight(0.2)
+    ImgCue1.setHeight(3)
 #keep track of which components have finished
     CueRoutineComponents = [FixationCross1, ImgCue1]
     for thisComponent in CueRoutineComponents:
@@ -726,9 +726,11 @@ for thisPracticetrial in Practicetrials:
     Rating_inst.setPos((0, 0))
     Rating_inst.setText('How negative did you feel? \n\n')
     Rating_inst.setFont('Arial')
-    Rating_inst.setHeight(0.1)
+    Rating_inst.setHeight(2)
     # keep track of which components have finished
-    TrialComponents = [emotion_image, Rating_inst, Scale2]
+    key_resp = event.BuilderKeyResponse()
+    key_resp.status = NOT_STARTED
+    TrialComponents = [emotion_image, Rating_inst, key_resp, Scale2]
     for thisComponent in TrialComponents:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -790,7 +792,25 @@ for thisPracticetrial in Practicetrials:
                 Scale2.tStop = t  # not accounting for scr refresh
                 Scale2.frameNStop = frameN  # exact frame index
                 Scale2.setAutoDraw(False)
-
+        #*key_resp* updates
+        waitOnFlip = False
+        if t>= 7.0 and key_resp.status == NOT_STARTED:
+            # keep track of start time/frame for later
+            key_resp.frameNStart = frameN  # exact frame index
+            key_resp.tStart = t  # local t and not account for scr refresh
+            key_resp.status = STARTED
+#            # keyboard checking is just starting
+            win.callOnFlip(key_resp.clock.reset)  # t=0 on next screen flip
+            event.clearEvents(eventType='keyboard')
+        if key_resp.status == STARTED:
+            theseKeys = event.getKeys(keyList=['1', '2', '3', '4', '5'])
+            print(theseKeys)
+        if t>= 11.0:
+                # keep track of stop time/frame for later
+                key_resp.tStop = t  # not accounting for scr refresh
+                key_resp.frameNStop = frameN  # exact frame index
+                key_resp.status = FINISHED
+        
         # check for quit (typically the Esc key)
         if endExpNow or event.getKeys(keyList=["escape"]):
             core.quit()
@@ -822,7 +842,7 @@ for thisPracticetrial in Practicetrials:
     text_4.setPos((0, 0))
     text_4.setText('RELAX')
     text_4.setFont('Arial')
-    text_4.setHeight(0.2)
+    text_4.setHeight(3)
     # keep track of which components have finished
     RelaxComponents = [text_4]
     for thisComponent in RelaxComponents:
@@ -966,7 +986,7 @@ trigger_text.setColor('white', colorSpace='rgb')
 trigger_text.setPos((0, 0))
 trigger_text.setText('Get ready!')
 trigger_text.setFont('Arial')
-trigger_text.setHeight(0.1)
+trigger_text.setHeight(3)
 
 key_resp_2 = event.BuilderKeyResponse()  # create an object of type KeyResponse
 key_resp_2.status = NOT_STARTED
@@ -1162,7 +1182,7 @@ for thisStudyTrial in StudyTrials:
     ImgCue1.setPos((0, 0))
     ImgCue1.setText(Cue)
     ImgCue1.setFont('Arial')
-    ImgCue1.setHeight(0.2)
+    ImgCue1.setHeight(3)
     # keep track of which components have finished
     CueRoutineComponents = [FixationCross1, ImgCue1]
     for thisComponent in CueRoutineComponents:
@@ -1245,7 +1265,7 @@ for thisStudyTrial in StudyTrials:
     Rating_inst.setPos((0, 0))
     Rating_inst.setText('How negative did you feel? \n\n')
     Rating_inst.setFont('Arial')
-    Rating_inst.setHeight(0.1)
+    Rating_inst.setHeight(2)
     
     key_resp = event.BuilderKeyResponse()
     key_resp.status = NOT_STARTED
@@ -1328,6 +1348,7 @@ for thisStudyTrial in StudyTrials:
             event.clearEvents(eventType='keyboard')
         if key_resp.status == STARTED:
             theseKeys = event.getKeys(keyList=['1', '2', '3', '4', '5'])
+            print(theseKeys)
         if t>= 11.0:
                 # keep track of stop time/frame for later
                 key_resp.tStop = t  # not accounting for scr refresh
@@ -1412,7 +1433,7 @@ for thisStudyTrial in StudyTrials:
     text_4.setPos((0, 0))
     text_4.setText('RELAX')
     text_4.setFont('Arial')
-    text_4.setHeight(0.2)
+    text_4.setHeight(3)
     # keep track of which components have finished
     RelaxComponents = [text_4]
     for thisComponent in RelaxComponents:
