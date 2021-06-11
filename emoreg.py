@@ -143,25 +143,25 @@ InstructionsClock = core.Clock()
 Instructions1 = visual.TextStim(win=win, name='Instructions1',
     text='You will be shown a series of photos. Before each photo, you will be instructed to either LOOK or DECREASE',
     font='Arial',
-    pos=(0, 0), height=0.06, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=0.6, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     depth=0.0);
 instructions2 = visual.TextStim(win=win, name='instructions2',
     text='When you see the word LOOK, \nlook at the picture and react naturally',
     font='Arial',
-    pos=(0, 0), height=0.06, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=0.6, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     depth=-1.0);
 Instructions3 = visual.TextStim(win=win, name='Instructions3',
     text='When you see the word DECREASE, \nthink about the picture in a way to decrease any negative feelings',
     font='Arial',
-    pos=(0, 0), height=0.06, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=0.6, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     depth=-2.0);
 Instructions4 = visual.TextStim(win=win, name='Instructions4',
     text='After each photo, you will be asked to rate how negative you feel on a scale of 1 to 5 like this:\n\n\n\n\n\n',
     font='Arial',
-    pos=(0, 0), height=0.06, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=0.6, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     depth=-3.0);
 #show correct scale from counterbalancing based on record ID
@@ -191,19 +191,19 @@ else:
 text = visual.TextStim(win=win, name='text',
     text='Press the button on the button box that corresponds with your choice',
     font='Arial',
-    pos=(0, 0), height=0.06, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=0.6, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     depth=-5.0);
 text_2 = visual.TextStim(win=win, name='text_2',
     text='When you see the word RELAX, you can rest until the next trial begins',
     font='Arial',
-    pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=0.6, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     depth=-6.0);
 text_3 = visual.TextStim(win=win, name='text_3',
     text="Let's practice!\n\nReady to begin? ",
     font='Arial',
-    pos=(0, 0), height=0.06, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=0.6, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     depth=-7.0);
 # Initialize components for Routine "Countdown"
@@ -241,7 +241,7 @@ FixationCross1 = visual.ImageStim(
 ImgCue1 = visual.TextStim(win=win, name='ImgCue1',
     text='default text',
     font='Arial',
-    pos=[0,0], height=0.08, wrapWidth=None, ori=0, 
+    pos=[0,0], height=0.8, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     depth=-1.0);
 
