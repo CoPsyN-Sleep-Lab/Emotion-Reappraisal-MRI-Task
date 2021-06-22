@@ -40,7 +40,7 @@ os.chdir(_thisDir)
 
 # Store info about the experiment session
 psychopyVersion = '1.83.04'
-expName = "emo_reg"  # from the Builder filename that created this script
+expName = "Emo Reg"  # from the Builder filename that created this script
 expInfo = {'participant': '', 'session': '1'}
 dlg = gui.DlgFromDict(dictionary=expInfo, title=expName)
 if dlg.OK == False: core.quit()  # user pressed cancel
@@ -88,7 +88,7 @@ mon.setSizePix(resolution)
 
 # Setup the Window
 win = visual.Window(
-    size=resolution, fullscr=True, screen=config['monitor']['screen'], 
+    size=resolution, fullscr=False, screen=config['monitor']['screen'], 
     #winType='pyglet', 
     allowGUI=False, allowStencil=False,
     monitor=mon, color=[-1,-1,-1], colorSpace='rgb',
