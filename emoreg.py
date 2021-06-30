@@ -47,14 +47,21 @@ if dlg.OK == False: core.quit()  # user pressed cancel
 expInfo['date'] = data.getDateStr()  # add a simple timestamp
 expInfo['expName'] = expName
 expInfo['psychopyVersion'] = psychopyVersion
-
+subj_id = expInfo['participant']
+session = expInfo['session']
+#convert subj_id to str 
+import unicodedata
+subj_id = unicodedata.normalize('NFKD', subj_id).encode('ascii', 'ignore')
+print(type(expInfo['session']))
 # Data file name stem = absolute path + name; later add .psyexp, .csv, .log, etc
 odd = False
-if int(expInfo['participant']) %2 ==1:
+#extract numbers from subj id and convert to integer
+num_id = re.findall(r'\d+', subj_id)
+if int(num_id[0])%2 ==1:
     odd = True
-    filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'] + '_1thumb')
+    filename = _thisDir + os.sep + u'data/%s_%s_%s_%s' % (subj_id, session, expName, expInfo['date']) #+ '_1thumb')
 else:
-    filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'] + '_5thumb')
+    filename = _thisDir + os.sep + u'data/%s_%s_%s_%s' % (subj_id, session, expName, expInfo['date'] )#+ '_5thumb')
 
 
 # FIXME: deleted ExperimentHandler here
