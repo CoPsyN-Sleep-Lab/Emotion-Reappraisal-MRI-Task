@@ -56,10 +56,14 @@ This task measures emotion reactivity and regulation based on the psychological 
     - Logs information about the experiment such as key presses, timing of each screen, and experiment information
     - Difficult to read, but we use a parsing script that pulls out relevant information for the data analysis
     - Used for data analysis
+    - Includes variable **key_resp_rev**, which is coded as 'rating= XX." This variable is the participant's rating for each trial. The rating is properly coded according to counter balancing. A rating of 0 signifies that the participant did not respond.
   2. .csv File
     - Logs information about key press, timing of stimuli etc. 
     - Easy to read, so can be used for data quality checks immediately after running the task. 
     - Not used in data analysis
+# Variables in output of Parser Script
+
+
 
 # Stimuli Characteristics and Presentation
 All images in this task were taken from the International Affective Picture System (IAPS) and are stored in the img/iaps folder.
