@@ -22,6 +22,7 @@ import os  # handy system and path functions
 import sys  # to get file system encoding
 import time
 import serial
+import re
 from glob import glob
 from os.path import basename, dirname, join
 
@@ -40,7 +41,7 @@ os.chdir(_thisDir)
 
 # Store info about the experiment session
 psychopyVersion = '1.83.04'
-expName = "Emo Reg"  # from the Builder filename that created this script
+expName = "emo_reg"  # from the Builder filename that created this script
 expInfo = {'participant': '', 'session': '1'}
 dlg = gui.DlgFromDict(dictionary=expInfo, title=expName)
 if dlg.OK == False: core.quit()  # user pressed cancel
@@ -49,13 +50,12 @@ expInfo['expName'] = expName
 expInfo['psychopyVersion'] = psychopyVersion
 subj_id = expInfo['participant']
 session = expInfo['session']
-#convert subj_id to str 
+
 import unicodedata
 subj_id = unicodedata.normalize('NFKD', subj_id).encode('ascii', 'ignore')
 print(type(expInfo['session']))
 # Data file name stem = absolute path + name; later add .psyexp, .csv, .log, etc
 odd = False
-#extract numbers from subj id and convert to integer
 num_id = re.findall(r'\d+', subj_id)
 if int(num_id[0])%2 ==1:
     odd = True
@@ -95,7 +95,7 @@ mon.setSizePix(resolution)
 
 # Setup the Window
 win = visual.Window(
-    size=resolution, fullscr=False, screen=config['monitor']['screen'], 
+    size=resolution, fullscr=True, screen=config['monitor']['screen'], 
     #winType='pyglet', 
     allowGUI=False, allowStencil=False,
     monitor=mon, color=[-1,-1,-1], colorSpace='rgb',
@@ -215,6 +215,18 @@ text_3 = visual.TextStim(win=win, name='text_3',
     depth=-7.0);
 # Initialize components for Routine "Countdown"
 CountdownClock = core.Clock()
+Countdown_5 = visual.TextStim(win=win, name='Countdown_5',
+    text='5',
+    font='Arial',
+    pos=(0, 0), height=3, wrapWidth=38, ori=0, 
+    color='white', colorSpace='rgb', opacity=1, 
+    depth=0.0);
+Countdown_4 = visual.TextStim(win=win, name='Countdown_4',
+    text='4',
+    font='Arial',
+    pos=(0, 0), height=3, wrapWidth=38, ori=0, 
+    color='white', colorSpace='rgb', opacity=1, 
+    depth=0.0);
 Countdown_3 = visual.TextStim(win=win, name='Countdown_3',
     text='3',
     font='Arial',
@@ -254,6 +266,7 @@ ImgCue1 = visual.TextStim(win=win, name='ImgCue1',
 
 # Initialize components for Routine "Trial"
 TrialClock = core.Clock()
+
 # set up handler to look after randomisation of conditions etc
 # We move this up here to avoid any timing impact from loading conditions from disk.
 practice_stimuli = join(_thisDir, "stimuli_order", "practiceStimuliList.xlsx")
@@ -373,7 +386,15 @@ text_4 = visual.TextStim(win=win, name='text_4',
     color='white', colorSpace='rgb', opacity=1, 
     depth=0.0);
 
-# FIXME: why is this commented out?
+#Initialize components for Routine Well Done
+well_doneClock = core.Clock()
+well_done = visual.TextStim(win=win, name='well_done',
+    text="Well Done!",
+    font='Arial',
+    pos=(0, 0), height=2, wrapWidth=38, ori=0, 
+    color='white', colorSpace='rgb', opacity=1, 
+    depth=-7.0);
+
 #Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
 routineTimer = core.CountdownTimer()  # to track time remaining of each (non-slip) routine 
@@ -1081,9 +1102,9 @@ routineTimer.reset()
 t = 0
 CountdownClock.reset()  # clock
 frameN = -1
-routineTimer.add(3.000000)
+routineTimer.add(5.000000)
 # update component parameters for each repeat.  Keep track of which components have finished
-CountdownComponents = [Countdown_3, countdown_2, countdown_1]
+CountdownComponents = [Countdown_5, Countdown_4, Countdown_3, countdown_2, countdown_1]
 for thisComponent in CountdownComponents:
     if hasattr(thisComponent, 'status'):
         thisComponent.status = NOT_STARTED
@@ -1098,44 +1119,70 @@ while continueRoutine:
     t = CountdownClock.getTime()
     frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
     # update/draw components on each frame
+    # *Countdown_5* updates
+    if t>=0.0 and Countdown_5.status == NOT_STARTED:
+        # keep track of start time/frame for later
+        Countdown_5.frameNStart = frameN  # exact frame index
+        Countdown_5.tStart = t  # local t and not account for scr refresh
+        Countdown_5.setAutoDraw(True)
+    if Countdown_5.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if t>= 1.0:
+            # keep track of stop time/frame for later
+            Countdown_5.tStop = t  # not accounting for scr refresh
+            Countdown_5.frameNStop = frameN  # exact frame index
+            Countdown_5.setAutoDraw(False)
+    # *Countdown_4* updates
+    if t>=1.0 and Countdown_4.status == NOT_STARTED:
+        # keep track of start time/frame for later
+        Countdown_4.frameNStart = frameN  # exact frame index
+        Countdown_4.tStart = t  # local t and not account for scr refresh
+        Countdown_4.setAutoDraw(True)
+    if Countdown_4.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if t>= 2.0:
+            # keep track of stop time/frame for later
+            Countdown_4.tStop = t  # not accounting for scr refresh
+            Countdown_4.frameNStop = frameN  # exact frame index
+            Countdown_4.setAutoDraw(False)
     
     # *Countdown_3* updates
-    if t>=0.0 and Countdown_3.status == NOT_STARTED:
+    if t>=2.0 and Countdown_3.status == NOT_STARTED:
         # keep track of start time/frame for later
         Countdown_3.frameNStart = frameN  # exact frame index
         Countdown_3.tStart = t  # local t and not account for scr refresh
         Countdown_3.setAutoDraw(True)
     if Countdown_3.status == STARTED:
         # is it time to stop? (based on global clock, using actual start)
-        if t>= 1.0:
+        if t>= 3.0:
             # keep track of stop time/frame for later
             Countdown_3.tStop = t  # not accounting for scr refresh
             Countdown_3.frameNStop = frameN  # exact frame index
             Countdown_3.setAutoDraw(False)
     
     # *countdown_2* updates
-    if t>=1.0 and countdown_2.status == NOT_STARTED:
+    if t>=3.0 and countdown_2.status == NOT_STARTED:
         # keep track of start time/frame for later
         countdown_2.frameNStart = frameN  # exact frame index
         countdown_2.tStart = t  # local t and not account for scr refresh
         countdown_2.setAutoDraw(True)
     if countdown_2.status == STARTED:
         # is it time to stop? (based on global clock, using actual start)
-        if t>=2.0:
+        if t>=4.0:
             # keep track of stop time/frame for later
             countdown_2.tStop = t  # not accounting for scr refresh
             countdown_2.frameNStop = frameN  # exact frame index
             countdown_2.setAutoDraw(False)
     
     # *countdown_1* updates
-    if t>= 2.0 and countdown_1.status == NOT_STARTED:
+    if t>= 4.0 and countdown_1.status == NOT_STARTED:
         # keep track of start time/frame for later
         countdown_1.frameNStart = frameN  # exact frame index
         countdown_1.tStart = t  # local t and not account for scr refresh
         countdown_1.setAutoDraw(True)
     if countdown_1.status == STARTED:
         # is it time to stop? (based on global clock, using actual start)
-        if t>= 3.0:
+        if t>= 5.0:
             # keep track of stop time/frame for later
             countdown_1.tStop = t  # not accounting for scr refresh
             countdown_1.frameNStop = frameN  # exact frame index
@@ -1378,7 +1425,7 @@ for thisStudyTrial in StudyTrials:
                 continueRoutine = True
                 break  # at least one component has not yet finished
         #if statement to reverse score odd ID based on counterbalancing of fingers
-        key_resp_rev=0
+        key_resp_rev= 0
         if not odd:
             if key_resp.keys==5:
                 key_resp_rev=1
@@ -1400,13 +1447,13 @@ for thisStudyTrial in StudyTrials:
         if key_resp.keys != None:  # we had a response
             thisExp.addData('key_resp', key_resp.rt)
 #        # refresh the screen
-    #Kathleen will update image name later
+    #log key response etc. to csv
         thisExp.addData('image_path', image_path)
-        
         thisExp.addData('image.started', emotion_image.tStart)
         thisExp.addData('image.stopped', emotion_image.tStop)
         thisExp.addData('Rating_inst.started', Rating_inst.tStart)
         thisExp.addData('Rating_inst.stopped', Rating_inst.tStop)
+        logging.log(level=logging.EXP, msg='Rating ='+ format(key_resp_rev))
         if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
             win.flip()
         if key_resp.keys != None:  # we had a response
@@ -1501,6 +1548,71 @@ for thisStudyTrial in StudyTrials:
 
     # -------Ending Routine "Relax"-------
     for thisComponent in RelaxComponents:
+        if hasattr(thisComponent, "setAutoDraw"):
+            thisComponent.setAutoDraw(False)
+    # the Routine "Relax" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
+
+
+
+    # ------Prepare to start Routine "well_done"-------
+    t = 0
+    well_doneClock.reset()  # clock
+    frameN = -1
+    # keep track of which components have finished
+    well_doneComponents = [well_done]
+    for thisComponent in well_doneComponents:
+        if hasattr(thisComponent, 'status'):
+            thisComponent.status = NOT_STARTED
+    # reset timers
+    t = 0
+    well_doneClock.reset()  # t0 is time of first possible flip
+    frameN = -1
+
+    # -------Run Routine "well_done"-------
+    continueRoutine = True
+    while continueRoutine:
+        # get current time
+        t = well_doneClock.getTime()
+        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+        # update/draw components on each frame
+
+        # *text_4* updates
+        if t >= 0.0 and well_done.status == NOT_STARTED:
+            # keep track of start time/frame for later
+            well_done.frameNStart = frameN  # exact frame index
+            well_done.tStart = t  # local t and not account for scr refresh
+            well_done.setAutoDraw(True)
+        elif t >= 8.0 and well_done.status == STARTED:
+            # is it time to stop? (based on global clock, using actual start)
+            # keep track of stop time/frame for later
+            well_done.tStop = t  # not accounting for scr refresh
+            well_done.frameNStop = frameN  # exact frame index
+            well_done.setAutoDraw(False)
+
+        # check for quit (typically the Esc key)
+        if endExpNow or event.getKeys(keyList=["escape"]):
+            if odd:
+                thisExp.saveAsWideText(filename+'_1thumb_'+'.csv')
+            else:
+                thisExp.saveAsWideText(filename+'_5thumb_'+'.csv')
+            core.quit()
+
+        # check if all components have finished
+        if not continueRoutine:  # a component has requested a forced-end of Routine
+            break
+        continueRoutine = False  # will revert to True if at least one component still running
+        for thisComponent in RelaxComponents:
+            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                continueRoutine = True
+                break  # at least one component has not yet finished
+
+        # refresh the screen
+        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+            win.flip()
+
+    # -------Ending Routine "well_done"-------
+    for thisComponent in well_doneComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     # the Routine "Relax" was not non-slip safe, so reset the non-slip timer
