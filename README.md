@@ -43,12 +43,44 @@ This task measures emotion reactivity and regulation based on the psychological 
     - This routine contains text after the practice trials asking if there are any questions about the task and the key response 's' to continue the task.
   13. Trigger
     - This routine contains the 'Get Ready' text and key response 's' to trigger the scanner. The cni_trigger() function is in this routine.
-  - The order of routines is: Instructions, countdown, CueRoutine, Trial, Relax, Instructions2, Trigger, Countdown, CueRoutine, Trial, Relax
+  14. Well Done
+    - This routine contains the screen with the Well Done text at the end of the task.
+  - The order of routines is: Instructions, countdown, CueRoutine, Trial, Relax, Instructions2, Trigger, Countdown, CueRoutine, Trial, Relax, Well Done
 - Stimuli order and sets 
   - The script gets information about the stimuli, stimuli location, cue, and inter-stimulus-interval (for RELAX screen) from .csv files that are saved in the stimuli_order folder. 
   - There are seperate files for practice stimuli, stimuli set A, and stimuli set B. 
   - The script reads these csv files in the order they are presented in the file. There is no randomization within sessions. So, stimuli sets will be presented in the same order for each participant. This means the first cue and image in Set A will always be the same. Each image will have the same cue assigned to it every run. 
   - The script pre-loads all images before the trial to improve timing
+# Task Components: 
+Component Name |Type| Description
+------------ | ------------- | -------------
+Instructions1 | Text object | First instruction screen: 'You will be shown a series of photos. Before each photo, you will be instructed to either LOOK or DECREASE', 
+instructions2 | Text Object | Second instruction screen: 'When you see the word LOOK, \nlook at the picture and react naturally'
+Instructions3 | Text Object | Third instruction screen: 'When you see the word DECREASE, \nthink about the picture in a way to decrease any negative feelings'
+Instructions4 | Text Object | Fourth instruction screen: 'After each photo, you will be asked to rate how negative you feel on a scale of 1 to 5 like this:\n\n\n\n\n\n',
+text | Text Object | Fifth instruction screen: 'Press the button on the button box that corresponds with your choice'
+text_2 | Text Object | Sixth instruction screen: 'When you see the word RELAX, you can rest until the next trial begins'
+text_3 | Text Object | Seventh instruction screen: "Let's practice!\n\nReady to begin? "
+Countdown_5 | Text Object | Number 5 in the countdown before begininng trail
+Countdown_4 | Text Object | Number 4 in the countdown before begininng trail
+Countdown_3 | Text Object | Number 3 in the countdown before begininng trail
+countdown_2 | Text Object | Number 2 in the countdown before begininng trail
+Countdown_1 | Text Object | Number 1 in the countdown before begininng trail
+Rating_inst | Text Object | Text shown during rating 
+text_4 | Text object | RELAX text
+Task_Instructions | Text Object | 'Do you have any questions before we begin? '
+trigger_text | Text Object | Text shown while waiting for trigger: 'Get Ready!'
+well_done | Text Object | Text for end screen: 'Well Done!'
+scale | Image Object | Image of rating scale shown during instruction screen 5.
+FixationCross1 | Image Object | Image of fixation cross
+ImageCue1 | Text Object | Text for the cue before image (look vs. decrease)
+Scale2 | Image Object | Image of rating scale shown during trials. Image shown is dependent on ID entered
+emotion_image | Image Object | Image of stimuli for each trial. Each image is a component of the list emotion_image_cache (emotion_image_cache[Picture])
+key_resp | Response Object | Allows a key response during rating screen (The actual key response is saved as **theseKeys**. The rating that the key response corresponds to is **key_resp_rev**
+key_resp_start | Response Object | Allows for key response during Task_Instructions. If key 's' is pressed, experiment advances
+key_resp_2 | Response Object | Allows for key response for trigger during the Get Ready screen. If key 's' is pressed, experiment advances and scanner is triggered. 
+
+
 
 # How Data is Logged
 - There are two output files in the 'data' folder that contain information about the experiment:
@@ -56,14 +88,22 @@ This task measures emotion reactivity and regulation based on the psychological 
     - Logs information about the experiment such as key presses, timing of each screen, and experiment information
     - Difficult to read, but we use a parsing script that pulls out relevant information for the data analysis
     - Used for data analysis
+    - Autologging is turned on at the experiment level. See troubleshooting guide for more information on autologging. 
     - Includes variable **key_resp_rev**, which is coded as 'rating= XX." This variable is the participant's rating for each trial. The rating is properly coded according to counter balancing. A rating of 0 signifies that the participant did not respond.
   2. .csv File
     - Logs information about key press, timing of stimuli etc. 
     - Easy to read, so can be used for data quality checks immediately after running the task. 
     - Not used in data analysis
-# Variables in output of Parser Script
-
-
+# How to Read the Output of Parser Script
+- Syntax: 
+    - stimulus.COMPONENT.on and stiumulus.COMPONENT.off: time each component started/stopped
+    - key.time: time that the key response started. In other words, the time the participant could have made a key response 
+    - key.rt: the reaction time of the key response- how long it took to press the button
+    - trial.Picture: filename of the image shown (taken from stimuli list)
+    - trial.Cue: Type of cue shown (look vs. decrease; taken from stimuli list)
+    - trial.ISI: The interstimulus interval for trial. This is also the duration of the Relax screen.  (taken from stimuli list)
+    - trial.Valence: Valance rating for image of that trial (taken from stimuli list)
+    - trial.Type: type of image (negative vs. neutral; taken from stimuli list))
 
 # Stimuli Characteristics and Presentation
 All images in this task were taken from the International Affective Picture System (IAPS) and are stored in the img/iaps folder.
@@ -73,7 +113,7 @@ All images in this task were taken from the International Affective Picture Syst
   - Cue = 2s
   - Image = 7s
   - Rating = 4s
-  - Relax = 1-6s jittered duraitonv (mean for each set: A=1.862 B=2.33s)
+  - Relax = 1-6s jittered duraiton (mean for each set: A=1.862 B=2.33s)
   - Total task time= 
 - Stimuli sets were created using the exact images in the original Eprime task. Mean valance was matched between stimuli sets 
   - Average Valence set A: 3.12
