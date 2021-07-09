@@ -752,7 +752,7 @@ for thisPracticetrial in Practicetrials:
     emotion_image = emotion_image_cache[Picture]
     Rating_inst.setColor('white', colorSpace='rgb')
     Rating_inst.setPos((0, 0))
-    Rating_inst.setText('How negative did you feel? \n\n')
+    Rating_inst.setText('How negative did you feel? \n\n\n\n')
     Rating_inst.setFont('Arial')
     Rating_inst.setHeight(2)
     # keep track of which components have finished
@@ -1317,7 +1317,7 @@ for thisStudyTrial in StudyTrials:
     #emotion_image.setImage(Picture)
     Rating_inst.setColor('white', colorSpace='rgb')
     Rating_inst.setPos((0, 0))
-    Rating_inst.setText('How negative did you feel? \n\n')
+    Rating_inst.setText('How negative did you feel? \n\n\n\n')
     Rating_inst.setFont('Arial')
     Rating_inst.setHeight(2)
     
