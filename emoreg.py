@@ -1453,7 +1453,7 @@ for thisStudyTrial in StudyTrials:
         thisExp.addData('image.stopped', emotion_image.tStop)
         thisExp.addData('Rating_inst.started', Rating_inst.tStart)
         thisExp.addData('Rating_inst.stopped', Rating_inst.tStop)
-        logging.log(level=logging.EXP, msg='Rating ='+ format(key_resp_rev))
+        #logging.log(level=logging.EXP, msg='Rating ='+ format(key_resp_rev))
         if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
             win.flip()
         if key_resp.keys != None:  # we had a response
